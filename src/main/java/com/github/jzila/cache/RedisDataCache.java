@@ -1,4 +1,4 @@
-package com.github.jzila.OpenJPARedisCache.cache;
+package com.github.jzila.cache;
 
 import org.apache.openjpa.datacache.AbstractDataCache;
 import org.apache.openjpa.datacache.DataCacheManager;

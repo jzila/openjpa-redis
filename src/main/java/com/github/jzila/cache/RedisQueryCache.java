@@ -1,4 +1,4 @@
-package com.github.jzila.OpenJPARedisCache.cache;
+package com.github.jzila.cache;
 
 import org.apache.openjpa.datacache.*;
 import redis.clients.jedis.ShardedJedis;
@@ -12,7 +12,7 @@ public class RedisQueryCache extends AbstractQueryCache {
     protected ShardedJedisPool _jedisPool = null;
 
     @Override
-    public void initialize(DataCacheManager manager) {
+    public synchronized void initialize(DataCacheManager manager) {
         super.initialize(manager);
 
         RedisCacheHelper cacheHelper = RedisCacheHelper.getInstance();

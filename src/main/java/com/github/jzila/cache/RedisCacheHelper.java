@@ -1,4 +1,4 @@
-package com.github.jzila.OpenJPARedisCache.cache;
+package com.github.jzila.cache;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.configuration.ConfigurationException;
@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class RedisCacheHelper {
     private static final int DEFAULT_REDIS_PORT = 6379;
-    private static final String CONFIG_FILE_NAME = "redis_openjpa.xml";
+    private static final String CONFIG_FILE_NAME = "openjpa_redis.xml";
     private String _cachePrefix = "";
 
     private static RedisCacheHelper _instance;
@@ -88,14 +88,14 @@ public class RedisCacheHelper {
         try {
             XMLConfiguration config = new XMLConfiguration(CONFIG_FILE_NAME);
 
-            List<HierarchicalConfiguration> serverProps = config.configurationsAt("redis.servers.server");
+            List<HierarchicalConfiguration> serverProps = config.configurationsAt("servers.server");
             for (HierarchicalConfiguration serverProp: serverProps) {
                 String host = serverProp.getString("host");
                 Integer port = serverProp.getInteger("port", DEFAULT_REDIS_PORT);
 
                 _shards.add(new JedisShardInfo(host, port));
             }
-            _cachePrefix = config.getString("redis.cacheprefix");
+            _cachePrefix = config.getString("prefix") + ":";
         } catch (ConfigurationException ex) {
         } finally {
             if (_shards.isEmpty()) {
