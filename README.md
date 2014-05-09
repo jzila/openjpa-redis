@@ -32,8 +32,8 @@ Once you've run `mvn install` above, you may include the plugin in your persiste
 </persistence>
 ```
 
-You must also create a file named openjpa\_redis.xml in your classpath. If you
-do not do this, the defaults will apply (localhost:6379 as the only server, and
+You must also create a file named `openjpa_redis.xml` in your classpath. If you
+do not do this, the defaults will apply (`localhost:6379` as the only server, and
 an empty prefix). This file should appear as follows (placeholders for
 localhost):
 
@@ -51,6 +51,10 @@ localhost):
     <prefix>foo</prefix>
 </redis>
 ```
+
+If you use this plugin with a Tomcat or TomEE server, you _must_ include all the dependencies
+in your Tomcat's `/lib` folder. This is because Tomcat initializes OpenJPA independently of
+each webapp, and so the jars included in the web app won't be visible to the OpenJPA classes.
 
 ## Tests
 
