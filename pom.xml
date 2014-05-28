@@ -1,5 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.jzila</groupId>
@@ -23,7 +28,9 @@
 	</licenses>
 
 	<scm>
-		<url>http://github.com/jzila/openjpa-redis</url>
+		<connection>scm:git:git@github.com:jzila/openjpa-redis.git</connection>
+		<developerConnection>scm:git:git@github.com:jzila/openjpa-redis.git</developerConnection>
+		<url>git@github.com:jzila/openjpa-redis.git</url>
 	</scm>
 
 	<build>
@@ -65,6 +72,20 @@
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
