@@ -47,7 +47,7 @@ localhost):
             <port>6379</port>
         </server>
     </servers>
-	<!-- The prefix that will be used to preface the keys in your Redis databse -->
+	<!-- The prefix that will be used to preface the keys in your Redis database -->
     <prefix>foo</prefix>
 </redis>
 ```
